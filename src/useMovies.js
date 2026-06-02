@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const KEY = "f84fc31d";
+const KEY = "6e753996";
 
 export function useMovies(query) {
   const [movies, setMovies] = useState([]);
@@ -9,8 +9,6 @@ export function useMovies(query) {
 
   useEffect(
     function () {
-      // callback?.();
-
       const controller = new AbortController();
 
       async function fetchMovies() {
@@ -19,7 +17,7 @@ export function useMovies(query) {
           setError("");
 
           const res = await fetch(
-            `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`,
+            `https://www.omdbapi.com/?apikey=${KEY}&s=${query}`, // ✅ use https
             { signal: controller.signal }
           );
 
